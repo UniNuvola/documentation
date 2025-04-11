@@ -1,0 +1,50 @@
+\documentclass[a4paper,11pt]{article}
+
+% Packages for additional functionality
+\usepackage[utf8]{inputenc} % For UTF-8 encoding
+\usepackage{amsmath, amssymb} % For math symbols
+\usepackage{hyperref} % For hyperlinks
+\usepackage{listings} % For code blocks
+\usepackage{xcolor} % For syntax highlighting in code
+\usepackage{graphicx}
+% Customize hyperlink colors
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+% Set the default font style
+\renewcommand{\familydefault}{\sfdefault}
+
+% Code block style
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{lightgray},
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\newcommand{\uninuvola}{UniNuvola }
+\newcommand{\uninuvolan}{UniNuvola}
+\newcommand{\jupyterhub}{Jupyterhub }
+\newcommand{\jupyterhubn}{Jupyterhub}
+
+% Document starts
+\begin{document}
+
+% Title and Author Information
+\title{Custom}
+\author{Marco Pezzella}
+\date{20/11/2024}
+
+\maketitle
+
+%\tableofcontents
+%\newpage
+
+\input{src/create_image}
+
+\end{document}

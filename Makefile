@@ -15,4 +15,4 @@ manual.pdf: manual.tex $(REQMANUAL)
 
 .PHONY: clean
 clean:
-	rm *.pdf
+	rm *.pdf *.aux *.log *.out
