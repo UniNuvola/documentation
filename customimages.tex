@@ -11,13 +11,15 @@
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
-    filecolor=magenta,      
+    filecolor=magenta,
     urlcolor=cyan,
 }
 
 % Set the default font style
 \renewcommand{\familydefault}{\sfdefault}
 
+\newcommand{\doctitle}{Custom Image Creationg Guide}
+\newcommand{\docsubtitle}{How to create a custom docker image for UniNuvola computing platform}
 % Code block style
 \lstset{
     basicstyle=\ttfamily\small,
@@ -35,12 +37,8 @@
 % Document starts
 \begin{document}
 
-% Title and Author Information
-\title{Custom}
-\author{Marco Pezzella}
-\date{20/11/2024}
-
-\maketitle
+% Use the frontispiece
+\input{src/frontmatter.tex}
 
 %\tableofcontents
 %\newpage
