@@ -1,3 +1,27 @@
+\section{Anatomy of the UniNuvola Images system}\label{image_anatomy}
+\uninuvola's images are a collection of container images recipes that are
+available in the UniNuvola's GitHub \href{https://github.com/UniNuvola/images}
+{images repository}. 
+These images have been created by the UniNuvola team and are available for all users.
+The base of all images is the jupyter notebook image, a system widely used in the
+scientific community, extended with many packages to cover a wide range of
+scientific applications commonly used in our University.
+
+The images can be seen as a tree structure, where the root is the base image
+``base'' and the branches adds new features to the base image and eventually 
+are the origin of different leaves. 
+For example, the image ``base/conda`` brings the conda package manager to the base
+image, while ``base/conda/pytorch`` adds the pytorch package to the conda image.
+
+With this in mind, building a new image is as simple as copying one of the
+available recipes, modifying it to your needs and building a new image.
+To ease this process, we have created a public template for the images creation.
+
+\section{Re-creation of the base image}\label{image_recreation}
+Let's see how to create a replica of the base image with a different name and belonging to the user.
+
+TODO from here
+
 \section{Creation of an image}\label{image_creation} All \uninuvola's Docker
 images are built on top of the ``Default'' image. You can copy one of the
 available  Dockerfile in your project directory and start modifying it. You can
