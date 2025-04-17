@@ -20,12 +20,66 @@ To ease this process, we have created a public template for the images creation.
 \section{Re-creation of the base image}\label{image_recreation}
 Let's see how to create a replica of the base image with a different name and belonging to the user.
 
-TODO from here
+\begin{bclogo}[logo=\bcinfo, couleurBarre=orange, noborder=true, couleur=white]{Warning}
+  Pre-requisite: you need to have a github account to replicate the base
+  image. You can use your personal account or create a new one.
+\end{bclogo}
 
-\section{Creation of an image}\label{image_creation} All \uninuvola's Docker
-images are built on top of the ``Default'' image. You can copy one of the
-available  Dockerfile in your project directory and start modifying it. You can
-install new packages using the appropriate package managers, using the
+Login to your github account and go to the UniNuvola's \href{https://github.com/UniNuvola/custom-image-template}{custom image template}
+repository. Click on the ``Use this template'' button to create a new
+repository based on the template. This will create a new repository in your
+github account with the same structure as the template. You can name it
+any name you like. \\
+This simple action trigger a github action that will automatically build
+the image and push it to the GitHub registry. The action will take a few
+minutes to complete. You can check the progress of the action by going to the ``Actions'' tab of
+your new repository. \\
+Once the action is completed, you will see a new image in your GitHub
+repository. You can check the image by going to the ``Packages'' tab of your
+repository.
+\\
+By clicking on the image name, you will see the details of the image, including
+the full name of the image, that should be in the format: \\
+\\
+``ghcr.io/\textit{your\_github\_username}/\textit{your\_repository\_name}:main''
+\\
+\\
+You can use this name to run the image in your UniNuvola environment, by
+putting it in the ``Select your desired image'' field of the
+\jupyterhubn{} interface. \\
+\section{Customizing the image}\label{image_customization}
+The main part of the image creation is done by modifying the Dockerfile. The
+Dockerfile is a text file that contains all the instructions to build the
+Docker image. The Dockerfile is located in the root directory of your
+repository and contains a placeholder for the custom code:
+\begin{lstlisting}[language=python]
+  ## -- ADD YOUR CODE HERE !! -- ##
+
+  ## --------------------------- ##
+\end{lstlisting}
+This is the place where you can add your custom code. You can add any
+Dockerfile command you like. Take a look at the \href{https://github.com/UniNuvola/images}
+{UniNuvola images repository} to see some examples of Dockerfiles we have
+created. \\
+You can either modify the file directly in the github interface or clone the
+repository to your local machine and modify it there. If you choose the
+latter option, you will need to push the changes to your github repository
+after you are done. \\
+In any case, every time you push a change to the repository, the github action will
+automatically build the image and push it to the GitHub registry, as described in
+the previous section. \\
+Cloning the repository to your local machine is a good option since you 
+can use your favorite text editor to modify the Dockerfile. You can also
+build the image locally and check if it builds correctly before pushing it to
+github. To do this, you will need to have a container engine installed on
+your local machine, like Docker. \\
+Describing how to install and use locally a container runtime is out of the scope of this document.
+
+\subsection{Some examples of Dockerfile commands}
+
+TODO Finish
+
+You can install new packages using the appropriate package managers, using the
 \textit{RUN} keyword in the Dockerfile
 
 \begin{lstlisting}[language=python]
@@ -38,32 +92,6 @@ Dockerfile. Do not use the /home directory as the target directory as it will be
 overwritten when loading the external storage.
 
 \begin{lstlisting}[language=python]
-  COPY myfile.txt  /app ADD https://example.com/path/to/remote/file.txt /app/
+  COPY myfile.txt  /app
+  ADD https://example.com/path/to/remote/file.txt /app/
 \end{lstlisting}
-%5. Set Environment Variables (if needed): If your application relies on
-%    environment variables, set them using the ENV keyword in your Dockerfile.
-%    For example: ENV ENV_VARIABLE=value
-
-In order to build your Docker Imaga, open a terminal and navigate to the
-directory containing the Dockerfile. Run the following command to build your
-Docker image:
-
-\begin{lstlisting}[language=python]
-    docker build -f image\_name -t image\_tag .
-\end{lstlisting}
-
-The \textit{-f} tag allows you to name your dockerfile with a custom name, while
-the \textit{-t}  flag allows the user to define a customised tag for your image.
-Replace image\_name with a suitable name for your Docker image. \\
-
-Once the image is built successfully, you can run a Docker container using the
-following command:
-
-\begin{lstlisting}[language=python]
-    docker run -it image\_tagname 
-\end{lstlisting}
-
-The \textit{-it} tag allows you to test your image locally and interactively. \\
-
-You can include a .dockerignore file to specify files and directories that
-should not be copied into the Docker image.
