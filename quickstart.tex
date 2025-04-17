@@ -1,34 +1,9 @@
 \documentclass[a4paper,11pt]{article}
 
-% Packages for additional functionality
-\usepackage[utf8]{inputenc} % For UTF-8 encoding
-\usepackage{amsmath, amssymb} % For math symbols
-\usepackage{hyperref} % For hyperlinks
-\usepackage{listings} % For code blocks
-\usepackage{xcolor} % For syntax highlighting in code
-\usepackage{graphicx}
-% Customize hyperlink colors
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=cyan,
-}
-
-% Set the default font style
-\renewcommand{\familydefault}{\sfdefault}
+\input{src/headers.tex}
 
 \newcommand{\doctitle}{Quickstart guide for UniNuvola}
 \newcommand{\docsubtitle}{A quickstart guide about how to use UniNuvola paltform and its main feaatures}
-
-% Code block style
-\lstset{
-    basicstyle=\ttfamily\small,
-    backgroundcolor=\color{lightgray},
-    frame=single,
-    breaklines=true,
-    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
-}
 
 % Document starts
 \begin{document}
