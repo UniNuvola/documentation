@@ -39,7 +39,7 @@ accordingly. \\
 After a successful login, you will be directed to the resource selection page. The first section to complete is the
 image selection. This part needs to be filled in by the user or select one of the available options. Images can be
 selected from those available in UniNuvola (see table \ref{tab:images}) or from your own customised version on
-Dockerhub. The tags \textit{latest} and \textit{deployed} are available in our harbor repository.\\
+Dockerhub or quay.io. The tags \textit{latest} and \textit{main} are the official versions available in our repositories. The \textit{main} tag corresponds to the recommended image version for users to use; the \textit{latest} tag  corresponds to working version of the image, that is being tested before moving it to the \textit{main} tag.\\
 
 \begin{table}[]
     \caption{List of the official images in UniNuvola}
@@ -64,12 +64,12 @@ Dockerhub. The tags \textit{latest} and \textit{deployed} are available in our h
 
 The image name will appear as:
 \begin{lstlisting}[language=bash] 
-harbor1.fisgeo.unipg.it/uninuvola/base:deployed
+harbor1.fisgeo.unipg.it/uninuvola/base:main
 \end{lstlisting}
 
 In the next drop-down menus, you will choose the number of CPUs required (1, 2, 4, 8, 16, 32), the amount of RAM
-required (4 Gb, 8 Gb, 16 Gb, 32 Gb), and, if you require GPUs, the number of them (0, 1, 2, 3, 4). At the moment, 100
-gigabyte of persistent storage are available for each user (Figure \ref{fig:resources}).\\
+required (8 GB, 16 GB, 32 GB, 64 GB), and, if you require GPUs, the number of them (0, 1, 2). At the moment, 100
+gigabyte of persistent storage are available for each user. In the bottom part of the page, you have the possibility to load additional libraries and software, \textit{e.g.} the Matlab computing environment or the Intel compiler libraries. You can choose multiple options, and the respective directories will appear, as read only, in your home directory. Figure \ref{fig:resources} shows the resource selection page.\\
 
 \begin{figure}[!ht]
     \centering
@@ -85,21 +85,24 @@ As per the disclaimer in Figure \ref{fig:pending}, remember: \textbf{UniNuvola i
 The main page of UniNuvola appears as depicted in Figure \ref{fig:uninuvola_main_page}. The top bar allows some
 management actions and some customisation of the user interface. Most importantly, inside the file men, you can find the
 disconnect and  the control hub options. The former allows to connect and disconnect from Jupyter (be aware that you
-will disconnect from the Hub page, but the pod will continue run up to 12 hours after becoming inactive), the later
+will disconnect from the Hub page, but the pod will continue run up to 24 hours after becoming inactive), the later
 option allows to kill the running image and it allows the user to load a new image. \\
 
-the left side of the menu allows the management of the local files. The four most upper options allow the user in order
+The left side of the menu allows the management of the local files. The four most upper options allow the user in order
 to: open new launchers tabs, create new directories, upload files, and refresh the browser. Files can be moved through
-the web interface or through remote terminal connection from UniNuvola to the machine hosting the files.\\
+the web interface or through remote terminal connection from UniNuvola to the machine hosting the files. You can access multiple tabs in your notebook.\\ 
+
+Inside the red rectangle in the left side, you can find some tools for managing processes: the running terminal and kernels, the table of contents that shows headings in notebooks and supported files, and the PYPI manager, that consents to check the installed plugins. \\ 
 
 The orange square includes all Python and R toolkits. The top part includes all the environments notebooks in the image,
 the bottom part instead the relative consoles. The top right part, the purple square, contains the Xpra notebook, that
 allows the usage of programs requiring a graphical interface.  \\
 
 In the last line, the first element, circled in green, allows the user to use a terminal. All terminals will start with
-the sh/bash terminal depending on the image. The elements circled in blue are the text editors in the Hub,  in the case
+the bash terminal depending on the image. The elements circled in blue are the text editors in the Hub,  in the case
 of the figure a general text editor, a Markdown and a Python file editor. \\
 
+The purple square shows the virtual desktop environment inside UniNuvola. The latter is a quick responsive desktop that allows the user to access to GUI programs, as MATLAB, VSCodium ad Firefox. \\
 
 \begin{figure}[!ht]
     \centering
@@ -118,13 +121,13 @@ found in the Hub Control Panel into the File menu. Figure \ref{fig:uninuvola_mul
     \label{fig:uninuvola_multi}
 \end{figure}
 
-\section{Activation of the conda environment}
-The first time an user enters in UniNuvola or deletes the .bashrc, conda is not active in the terminal. At this stage
-the process can be done manually following these steps:
-\begin{lstlisting}[language=bash] 
-/opt/conda/condabin/conda  init source ~/.bashrc
-\end{lstlisting}
-Afterwards, you will be able to use conda as in any other environment.
+%\section{Activation of the conda environment}
+%The first time an user enters in UniNuvola or deletes the .bashrc, conda is not active in the terminal. At this stage
+%the process can be done manually following these steps:
+%\begin{lstlisting}[language=bash] 
+%/opt/conda/condabin/conda  init source ~/.bashrc
+%\end{lstlisting}
+%Afterwards, you will be able to use conda as in any other environment.
 
 \section{Troubleshooting}
 \subsection{Multiple readdressing into the login page}
