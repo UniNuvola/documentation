@@ -5,10 +5,16 @@
 \newcommand{\doctitle}{UniNuvola Users Guide}
 \newcommand{\docsubtitle}{How to use the UniNuvola computing platform}
 
+% Patch \part to reset section counter automatically
+\pretocmd{\part}{\setcounter{section}{0}}{}{}
+
 % Document starts
 \begin{document}
 
 \include{src/frontmatter}
+
+\tableofcontents
+\newpage
 
 \section*{Introduction}
 \input{src/introduction.tex}
