@@ -29,45 +29,21 @@ Once you get accepted, after login into Vault, you will be redirected the  start
 
 \begin{bclogo}[logo=\bcinfo, couleurBarre=orange, noborder=true, couleur=white]{Warning}
 If you didn't logout after your account creation, or your token expired, it is possible that in the following session
-you can be readdressed into the login page.  In order to solve the issue you can opt for two solutions:  disconnect by hand from the \href{https://vault.uninuvola.unipg.it:8200/ui/vault/dashboard}{UniNuvola Vault webpage}, or delete the cookies in your browser.
-
+you can be readdressed into the login page. To solve the issue you can disconnect by hand from the \href{https://vault.uninuvola.unipg.it:8200}{UniNuvola Vault webpage}, as in Figure \ref{img:logout}.
 \end{bclogo}
+
+\begin{figure}[!ht]
+    \center
+    \includegraphics[width=0.8\linewidth]{img/vault.png}
+    \caption{Uninvola's Vault logout page.}
+    \label{img:logout}
+\end{figure}
 
 
 \subsection{Selection of the Image and resources}
 
 After a successful login, you will be directed to the resource selection page. The first section to complete is the
-image selection. This part needs to be filled in by the user or select one of the available options. Images can be
-selected from those available in UniNuvola (see table \ref{tab:images}) or from your own customised version on
-Dockerhub or quay.io. The tags \textit{latest} and \textit{main} are the official versions available in our repositories. The \textit{main} tag corresponds to the recommended image version for users to use; the \textit{latest} tag  corresponds to working version of the image, that is being tested before moving it to the \textit{main} tag.\\
-
-%\begin{table}[]
-%    \caption{List of the official images in UniNuvola}
-%    \label{tab:images}
-%    \centering
-%    \begin{tabular}{|c|c|}
-%        \hline
-%        Base              & harbor1.fisgeo.unipg.it/uninuvola/base             \\ \hline
-%        Engineering       & harbor1.fisgeo.unipg.it/uninuvola/engineering      \\ \hline
-%        Conda             & harbor1.fisgeo.unipg.it/uninuvola/conda            \\ \hline
-%        Chemistry         & harbor1.fisgeo.unipg.it/uninuvola/chemistry        \\ \hline
-%        Quantum Computing & harbor1.fisgeo.unipg.it/uninuvola/quantumcomputing \\ \hline
-%        Genomics          & harbor1.fisgeo.unipg.it/uninuvola/genomics         \\ \hline
-%        Hydraulics        & harbor1.fisgeo.unipg.it/uninuvola/hydraulics       \\ \hline
-%        Tensorflow        & harbor1.fisgeo.unipg.it/uninuvola/tensorflow       \\ \hline
-%        Pytorch           & harbor1.fisgeo.unipg.it/uninuvola/pytorch          \\ \hline
-%        Pytorch-GPU       & harbor1.fisgeo.unipg.it/uninuvola/pytorchgpu       \\ \hline
-%        Optimisation      & harbor1.fisgeo.unipg.it/uninuvola/optimisation     \\ \hline
-%    \end{tabular}
-%\end{table}
-
-
-The image name will appear as:
-\begin{lstlisting}[language=bash] 
-harbor1.fisgeo.unipg.it/uninuvola/base:main
-\end{lstlisting}
-
-In the next drop-down menus, you will choose the required resources, as it is shown in Figure \ref{fig:resources}.\\
+image selection. As per Figure \ref{fig:resources}, the user can select the image to use, the number of cores and RAM required, graphic cards, and additional packages.
 
 \begin{figure}[!ht]
     \centering
@@ -75,9 +51,6 @@ In the next drop-down menus, you will choose the required resources, as it is sh
     \caption{Resources selection page}
     \label{fig:resources}
 \end{figure}
-
-As per the disclaimer in Figure \ref{fig:pending}, remember: \textbf{UniNuvola is a prototype. We provide computational
-    power and storage, but data are not backed up. Be careful with your data!} \\
 
 \subsection{Inside UniNuvola}
 The main page of UniNuvola appears as depicted in Figure \ref{fig:uninuvola_main_page}. The top bar allows some
@@ -109,9 +82,14 @@ The purple square shows the virtual desktop environment inside UniNuvola. The la
     \label{fig:uninuvola_main_page}
 \end{figure}
 
-\begin{figure}[!h]
-    \center
-    \includegraphics[width=0.8\linewidth]{img/vault.png}
-    \caption{Uninvola's Vault logout page.}
-    \label{img:logout}
+
+\subsection{Logout}
+
+After finishing utilising UniNuvola, you should destroy your resources and log out from the platform. While resources are ephemeral, the user's storage is persistent. Figure \ref{fig:destroy_res} how perform this operation. After clicking on \textit{File} and clicking on \textit{Hub Control Plane} (top part of the Figure), you can click on the red button to destroy the resource (bottom part of the Figure). Afterwards, you can logout clicking simply on the logout bottom on the top right. 
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/logout.pdf}
+    \caption{Instructions to destroy resources and logout from UniNuvola.}
+    \label{fig:destroy_res}
 \end{figure}
