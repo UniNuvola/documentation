@@ -1,4 +1,5 @@
-\section{Anatomy of the UniNuvola Images system}\label{image_anatomy}
+\section{Custom images}
+\subsection{Anatomy of the UniNuvola Images system}\label{image_anatomy}
 \uninuvola's images are a collection of container images recipes that are
 available in the UniNuvola's GitHub \href{https://github.com/UniNuvola/images}
 {images repository}. 
@@ -17,7 +18,7 @@ With this in mind, building a new image is as simple as copying one of the
 available recipes, modifying it to your needs and building a new image.
 To ease this process, we have created a public template for the images creation.
 
-\section{Re-creation of the base image}\label{image_recreation}
+\subsection{Re-creation of the base image}\label{image_recreation}
 Let's see how to create a replica of the base image with a different name and belonging to the user.
 
 \begin{bclogo}[logo=\bcinfo, couleurBarre=orange, noborder=true, couleur=white]{Warning}
@@ -47,7 +48,7 @@ the full name of the image, that should be in the format: \\
 You can use this name to run the image in your UniNuvola environment, by
 putting it in the ``Select your desired image'' field of the
 \jupyterhubn{} interface. \\
-\section{Customizing the image}\label{image_customization}
+\subsection{Customizing the image}\label{image_customization}
 The main part of the image creation is done by modifying the Dockerfile. The
 Dockerfile is a text file that contains all the instructions to build the
 Docker image. The Dockerfile is located in the root directory of your
@@ -75,7 +76,7 @@ github. To do this, you will need to have a container engine installed on
 your local machine, like Docker. \\
 Describing how to install and use locally a container runtime is out of the scope of this document.
 
-\subsection{Some examples of Dockerfile commands}
+\subsubsection{Some examples of Dockerfile commands}
 
 The most straightforward way to learn how to modify the Dockerfile is to
 look at the existing images in the \href{https://github.com/UniNuvola/images}
