@@ -77,21 +77,35 @@ Describing how to install and use locally a container runtime is out of the scop
 
 \subsection{Some examples of Dockerfile commands}
 
-TODO Finish
+The most straightforward way to learn how to modify the Dockerfile is to
+look at the existing images in the \href{https://github.com/UniNuvola/images}
+{UniNuvola images repository}.
 
-You can install new packages using the appropriate package managers, using the
-\textit{RUN} keyword in the Dockerfile
+You can add any command you like to the Dockerfile. The most common commands
+are:
+\begin{itemize}
+  \item \textit{Installing packages}: You can install new packages using the
+  appropriate package managers, using the \textit{RUN} keyword in the Dockerfile. \\
+  For example, to install a package using \textit{apt}, you can use the following
 
 \begin{lstlisting}[language=python]
   RUN apt-get update && apt-get install -y package\_name
 \end{lstlisting}
 
-Copy your application code into the Docker image, using the \textit{COPY} (for
-local files) or \textit{ADD} (for local and remote files) command in the
-Dockerfile. Do not use the /home directory as the target directory as it will be
-overwritten when loading the external storage.
-
+  \item \textit{Copying files}: You can copy files from your local machine to the
+  image using the \textit{COPY} command. \\
+  For example, to copy a file called ``my\_file.txt'' from your local machine
+  to the image, you can use the following command:
 \begin{lstlisting}[language=python]
-  COPY myfile.txt  /app
-  ADD https://example.com/path/to/remote/file.txt /app/
+  COPY my\_file.txt /path/in/image/
 \end{lstlisting}
+
+  \item \textit{Setting environment variables}: You can set environment
+  variables using the \textit{ENV} command. \\
+  For example, to set an environment variable called ``MY\_VAR'' to the value
+  ``my\_value'', you can use the following command:
+\begin{lstlisting}[language=python]
+  ENV MY\_VAR=my\_value
+\end{lstlisting}
+
+\end{itemize}
