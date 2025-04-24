@@ -15,4 +15,4 @@ manual.pdf: manual.tex $(REQMANUAL)
 
 .PHONY: clean
 clean:
-	rm -f *.fdb_latexmk *.fls *.pdf *.aux *.log *.out *.synctex.gz
+	rm -f *.fdb_latexmk *.fls *.pdf *.aux *.log *.out *.synctex.gz *.toc
