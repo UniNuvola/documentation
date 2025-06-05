@@ -28,8 +28,8 @@ If it is your first time accessing the server, you will be redirected to a web p
 Once you get accepted, after login into Vault, you will be redirected the  starting page, where you can choose the image and resources.
 
 \begin{bclogo}[logo=\bcinfo, couleurBarre=orange, noborder=true, couleur=white]{Warning}
-If you didn't logout after your account creation, or your token expired, it is possible that in the following session
-you can be readdressed into the login page. To solve the issue you can disconnect by hand from the \href{https://vault.uninuvola.unipg.it:8200}{UniNuvola Vault webpage}, as in Figure \ref{img:logout}.
+    If you didn't logout after your account creation, or your token expired, it is possible that in the following session
+    you can be readdressed into the login page. To solve the issue you can disconnect by hand from the \href{https://vault.uninuvola.unipg.it:8200}{UniNuvola Vault webpage}, as in Figure \ref{img:logout}.
 \end{bclogo}
 
 \begin{figure}[!ht]
@@ -54,19 +54,19 @@ image selection. As per Figure \ref{fig:resources}, the user can select the imag
 
 \subsection{Inside UniNuvola}
 The main page of UniNuvola appears as depicted in Figure \ref{fig:uninuvola_main_page}. The top bar allows some
-management actions and some customisation of the user interface. Most importantly, inside the file men, you can find the
+management actions and some customization of the user interface. Most importantly, inside the file men, you can find the
 disconnect and  the control hub options. The former allows to connect and disconnect from Jupyter (be aware that you
 will disconnect from the Hub page, but the pod will continue run up to 24 hours after becoming inactive), the later
 option allows to kill the running image and it allows the user to load a new image. \\
 
 The left side of the menu allows the management of the local files. The four most upper options allow the user in order
 to: open new launchers tabs, create new directories, upload files, and refresh the browser. Files can be moved through
-the web interface or through remote terminal connection from UniNuvola to the machine hosting the files. You can access multiple tabs in your notebook.\\ 
+the web interface or through remote terminal connection from UniNuvola to the machine hosting the files. You can access multiple tabs in your notebook.\\
 
-Inside the red rectangle in the left side, you can find some tools for managing processes: the running terminal and kernels, the table of contents that shows headings in notebooks and supported files, and the PYPI manager, that consents to check the installed plugins. \\ 
+Inside the red rectangle in the left side, you can find some tools for managing processes: the running terminal and kernels, the table of contents that shows headings in notebooks and supported files, and the PYPI manager, that consents to check the installed plugins. \\
 
 The orange square includes all Python and R toolkits. The top part includes all the environments notebooks in the image,
-the bottom part instead the relative consoles. The top right part, the purple square, contains the Xpra notebook, that
+the bottom part instead the relative consoles. The top right part, the purple square, contains the GUI notebook, that
 allows the usage of programs requiring a graphical interface.  \\
 
 In the last line, the first element, circled in green, allows the user to use a terminal. All terminals will start with
@@ -85,7 +85,22 @@ The purple square shows the virtual desktop environment inside UniNuvola. The la
 
 \subsection{Logout}
 
-After finishing utilising UniNuvola, you should destroy your resources and log out from the platform. While resources are ephemeral, the user's storage is persistent. Figure \ref{fig:destroy_res} how perform this operation. After clicking on \textit{File} and clicking on \textit{Hub Control Plane} (top part of the Figure), you can click on the red button to destroy the resource (bottom part of the Figure). Afterwards, you can logout clicking simply on the logout bottom on the top right. 
+
+\begin{bclogo}[logo=\bcinfo, couleurBarre=orange, noborder=true, couleur=white]{Warning}
+    \uline{If you don't log out, the resources will
+        remain assigned to your account and may not be available to others!
+        Therefore, performing the logout procedure is crucial to ensure a fair
+        and efficient use of UniNuvola system.}
+\end{bclogo}
+
+\noindent After finishing utilizing UniNuvola, it's \textit{\textbf{highly
+        recommended}} to destroy your resources and log out from the platform. While
+resources are ephemeral, the user's storage is persistent. Figure
+\ref{fig:destroy_res} shows how to perform this operation. After clicking on
+\textit{File} and clicking on \textit{Hub Control Plane} (top part of the
+Figure), you can click on the red button to destroy the resource (bottom part of
+the Figure). Afterwards, you can logout clicking simply on the logout bottom on
+the top right.
 
 \begin{figure}[!ht]
     \centering
