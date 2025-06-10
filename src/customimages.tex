@@ -2,15 +2,15 @@
 \subsection{Anatomy of the UniNuvola Images system}\label{image_anatomy}
 \uninuvola's images are a collection of container images recipes that are
 available in the UniNuvola's GitHub \href{https://github.com/UniNuvola/images}
-{images repository}. 
+{images repository}.
 These images have been created by the UniNuvola team and are available for all users.
 The base of all images is the jupyter notebook image, a system widely used in the
 scientific community, extended with many packages to cover a wide range of
 scientific applications commonly used in our University.
 
 The images can be seen as a tree structure, where the root is the base image
-``base'' and the branches adds new features to the base image and eventually 
-are the origin of different leaves. 
+``base'' and the branches adds new features to the base image and eventually
+are the origin of different leaves.
 For example, the image ``base/conda`` brings the conda package manager to the base
 image, while ``base/conda/pytorch`` adds the pytorch package to the conda image.
 
@@ -69,7 +69,7 @@ after you are done. \\
 In any case, every time you push a change to the repository, the github action will
 automatically build the image and push it to the GitHub registry, as described in
 the previous section. \\
-Cloning the repository to your local machine is a good option since you 
+Cloning the repository to your local machine is a good option since you
 can use your favorite text editor to modify the Dockerfile. You can also
 build the image locally and check if it builds correctly before pushing it to
 github. To do this, you will need to have a container engine installed on
@@ -86,27 +86,64 @@ You can add any command you like to the Dockerfile. The most common commands
 are:
 \begin{itemize}
   \item \textit{Installing packages}: You can install new packages using the
-  appropriate package managers, using the \textit{RUN} keyword in the Dockerfile. \\
-  For example, to install a package using \textit{apt}, you can use the following
+        appropriate package managers, using the \textit{RUN} keyword in the Dockerfile. \\
+        For example, to install a package using \textit{apt}, you can use the following
 
-\begin{lstlisting}[language=python]
+        \begin{lstlisting}[language=python]
   RUN apt-get update && apt-get install -y package\_name
 \end{lstlisting}
 
   \item \textit{Copying files}: You can copy files from your local machine to the
-  image using the \textit{COPY} command. \\
-  For example, to copy a file called ``my\_file.txt'' from your local machine
-  to the image, you can use the following command:
-\begin{lstlisting}[language=python]
-  COPY my\_file.txt /path/in/image/
+        image using the \textit{COPY} command. \\
+        For example, to copy a file called ``my\_file.txt'' from your local machine
+        to the image, you can use the following command:
+        \begin{lstlisting}[language=python]
+  COPY my_file.txt /path/in/image/
 \end{lstlisting}
 
   \item \textit{Setting environment variables}: You can set environment
-  variables using the \textit{ENV} command. \\
-  For example, to set an environment variable called ``MY\_VAR'' to the value
-  ``my\_value'', you can use the following command:
-\begin{lstlisting}[language=python]
-  ENV MY\_VAR=my\_value
+        variables using the \textit{ENV} command. \\
+        For example, to set an environment variable called ``MY\_VAR'' to the value
+        ``my\_value'', you can use the following command:
+        \begin{lstlisting}[language=python]
+  ENV MY_VAR=my_value
 \end{lstlisting}
 
 \end{itemize}
+
+
+\subsubsection{A Dockerfile example}
+
+Below you can find an example of a Dockerfile for a custom UniNuvola image using
+the template described in the previous sections. In this file, two system
+packages are installed via apt:
+\href{https://github.com/xournalpp/xournalpp}{Xournal ++}, a handwriting
+note-taking software, and \href{https://github.com/neovim/neovim}{NeoVim}, a
+text editor. The file also demonstrates how to install a custom Conda
+environment by defining its name, the required packages, the desired Python
+version, and finally creating the Jupyter kernel so that the environment appears
+on the UniNuvola home page.
+
+\begin{lstlisting}[language=bash]
+  FROM quay.io/uninuvola/base:latest
+
+  # DO NOT EDIT USER VALUE
+  USER root
+
+  ## -- ADD YOUR CODE HERE !! -- ##
+  # Install some OS packages:
+  #   Xournalpp (handwriting notetaking software)
+  #   NeoVim (CLI Editor)
+  RUN apt update && apt -y install xournalpp neovim
+
+  # Create a conda env with some python libraries
+  ENV MY_ENV_NAME=mycoolenv
+  RUN conda create -n $MY_ENV_NAME python=3.11.5 && \
+    conda init && \
+    conda install -n $MY_ENV_NAME numpy pandas matplotlib scipy ipykernel && \
+    /opt/conda/envs/$MY_ENV_NAME/bin/python -m ipykernel install --name  $MY_ENV_NAME --display-name $MY_ENV_NAME
+  ## --------------------------- ##
+
+  # DO NOT EDIT USER VALUE
+  USER jovyan
+\end{lstlisting}
